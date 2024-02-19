@@ -1,6 +1,6 @@
 package epicode.u5w3d1.repositories;
 
-import cosminpetrea.u5w2d5.entities.Employee;
+import epicode.u5w3d1.entities.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

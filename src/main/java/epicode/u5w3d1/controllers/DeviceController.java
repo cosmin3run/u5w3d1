@@ -1,11 +1,11 @@
 package epicode.u5w3d1.controllers;
 
 
-import cosminpetrea.u5w2d5.entities.Device;
-import cosminpetrea.u5w2d5.exceptions.BadRequestException;
-import cosminpetrea.u5w2d5.payloads.AssignDeviceToEmloyeeDTO;
-import cosminpetrea.u5w2d5.payloads.NewDeviceDTO;
-import cosminpetrea.u5w2d5.services.DeviceService;
+import epicode.u5w3d1.entities.Device;
+import epicode.u5w3d1.exceptions.BadRequestException;
+import epicode.u5w3d1.payloads.AssignDeviceToEmloyeeDTO;
+import epicode.u5w3d1.payloads.NewDeviceDTO;
+import epicode.u5w3d1.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,9 @@
 package epicode.u5w3d1.controllers;
 
-import cosminpetrea.u5w2d5.entities.Employee;
-import cosminpetrea.u5w2d5.exceptions.BadRequestException;
-import cosminpetrea.u5w2d5.payloads.NewEmployeeDTO;
-import cosminpetrea.u5w2d5.services.EmployeeService;
+import epicode.u5w3d1.entities.Employee;
+import epicode.u5w3d1.exceptions.BadRequestException;
+import epicode.u5w3d1.payloads.NewEmployeeDTO;
+import epicode.u5w3d1.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

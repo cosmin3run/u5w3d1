@@ -1,13 +1,13 @@
 package epicode.u5w3d1.services;
 
 
-import cosminpetrea.u5w2d5.entities.Device;
-import cosminpetrea.u5w2d5.entities.Employee;
-import cosminpetrea.u5w2d5.enums.DeviceStatus;
-import cosminpetrea.u5w2d5.exceptions.NotFoundException;
-import cosminpetrea.u5w2d5.payloads.AssignDeviceToEmloyeeDTO;
-import cosminpetrea.u5w2d5.payloads.NewDeviceDTO;
-import cosminpetrea.u5w2d5.repositories.DeviceDAO;
+import epicode.u5w3d1.entities.Device;
+import epicode.u5w3d1.entities.Employee;
+import epicode.u5w3d1.enums.DeviceStatus;
+import epicode.u5w3d1.exceptions.NotFoundException;
+import epicode.u5w3d1.payloads.AssignDeviceToEmloyeeDTO;
+import epicode.u5w3d1.payloads.NewDeviceDTO;
+import epicode.u5w3d1.repositories.DeviceDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

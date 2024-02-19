@@ -1,6 +1,5 @@
 package epicode.u5w3d1.entities;
 
-import cosminpetrea.u5w2d5.enums.DeviceStatus;
 import epicode.u5w3d1.enums.DeviceStatus;
 import jakarta.persistence.*;
 import lombok.*;
