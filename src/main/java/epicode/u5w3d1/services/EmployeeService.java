@@ -81,6 +81,8 @@ public class EmployeeService {
         return employeeDAO.save(found);
     }
 
-
+    public Employee findByEmail(String email) {
+        return employeeDAO.findByEmail(email).orElseThrow(() -> new NotFoundException("Following email not found " + email));
+    }
 
 }
