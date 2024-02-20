@@ -2,6 +2,7 @@ package epicode.u5w3d1.exceptions;
 
 import epicode.u5w3d1.payloads.errors.ErrorsPayloadWithList;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -41,6 +42,12 @@ public class ExceptionsHandler {
     @ResponseStatus(HttpStatus.UNAUTHORIZED) // 401
     public ErrorsPayload handleUnauthorized(UnauthorizedException ex) {
         return new ErrorsPayload(ex.getMessage(), LocalDate.now());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorsPayload handleAccessDenied(AccessDeniedException ex){
+        return new ErrorsPayload("You have no authority to this endpoint", LocalDate.now());
     }
 
 }

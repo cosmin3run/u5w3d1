@@ -4,6 +4,7 @@ package epicode.u5w3d1.services;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import epicode.u5w3d1.entities.Employee;
+import epicode.u5w3d1.enums.Role;
 import epicode.u5w3d1.exceptions.BadRequestException;
 import epicode.u5w3d1.exceptions.NotFoundException;
 import epicode.u5w3d1.payloads.NewEmployeeDTO;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class EmployeeService {
 
 
     //SAVE EMPLOYEE IN DB
-    public Employee saveEmployee(NewEmployeeDTO payload) throws IOException{
+    public Employee saveEmployee(@Validated NewEmployeeDTO payload ) throws IOException{
         employeeDAO.findByEmail(payload.email()).ifPresent(employee -> {
             throw new BadRequestException("Email '" + payload.email() + "' is already in use");
         });
@@ -42,6 +44,8 @@ public class EmployeeService {
         newEmployee.setName(payload.name());
         newEmployee.setSurname(payload.surname());
         newEmployee.setEmail(payload.email());
+        newEmployee.setPassword(payload.password());
+        newEmployee.setRole(Role.USER);
         return employeeDAO.save(newEmployee);
     }
 
@@ -57,13 +61,14 @@ public class EmployeeService {
     }
 
     //UPDATE EMPLOYEE IN DB
-    public Employee findByIdAndUpdate(UUID id, NewEmployeeDTO payload){
+    public Employee findByIdAndUpdate(UUID id, @Validated NewEmployeeDTO payload){
         Employee found = this.findById(id);
 
         found.setUsername(payload.username());
         found.setName(payload.name());
         found.setSurname(payload.surname());
         found.setEmail(payload.email());
+        found.setPassword(payload.password());
         return employeeDAO.save(found);
     }
 

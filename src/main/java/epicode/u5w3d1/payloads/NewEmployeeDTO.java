@@ -19,8 +19,13 @@ public record NewEmployeeDTO(
         String surname,
 
         @NotEmpty(message = "Email is mandatory")
-        @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "L'email inserita non è valida")
-        String email) {
+        @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email is invalid")
+        String email,
+
+        @NotEmpty(message = "Password required.")
+        @Size(min=5, max=10, message = "Psw must be from 5 to 10 chars.")
+        String password
+        ) {
 
 
 

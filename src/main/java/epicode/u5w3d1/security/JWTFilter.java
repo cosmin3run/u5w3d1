@@ -45,7 +45,7 @@ public class JWTFilter extends OncePerRequestFilter {
 
         //Avvisare spring che l'utente è autenticato
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(employee, null);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(employee, null, employee.getAuthorities());
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

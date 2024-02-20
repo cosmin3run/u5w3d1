@@ -1,5 +1,6 @@
 package epicode.u5w3d1.controllers;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import epicode.u5w3d1.entities.Employee;
 import epicode.u5w3d1.exceptions.BadRequestException;
 import epicode.u5w3d1.payloads.NewEmployeeDTO;
@@ -7,6 +8,7 @@ import epicode.u5w3d1.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -43,11 +45,14 @@ public class EmployeeController {
 
     //FIND EMPLOYEE BY ID
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public Employee findById(@PathVariable UUID id) {return this.employeeService.findById(id);}
 
 
     //UPDATE EMPLOYEE
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+
     public Employee FindByIdAndUpdate(@PathVariable UUID id, @RequestBody NewEmployeeDTO updatedEmployee){
         return this.employeeService.findByIdAndUpdate(id, updatedEmployee);
     }
@@ -55,6 +60,7 @@ public class EmployeeController {
     //DELETE EMPLOYEE
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findByIdAndDelete(@PathVariable UUID id) {this.employeeService.findByIDAndDelete(id);}
 

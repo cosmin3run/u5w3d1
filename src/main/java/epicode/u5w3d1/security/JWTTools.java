@@ -27,7 +27,7 @@ public class JWTTools {
         try {
             Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parse(token);
         } catch (Exception ex) {
-            throw new UnauthorizedException("Problemi col token! Effettua di nuovo il login!");
+            throw new UnauthorizedException("Token is problematic");
         }
     }
 
